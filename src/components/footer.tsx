@@ -1,86 +1,428 @@
-import React from 'react'
-import GlobeDemo from './snippets/globeview'
-import { TextRevealCardPreview } from './snippets/textreveal'
-import { HiOutlineMenu } from "react-icons/hi";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
-import { RxCross2 } from "react-icons/rx";
-GlobeDemo
-TextRevealCardPreview
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 
-const footer = () => {
+const World = dynamic(() => import("../ui/globe").then((m) => m.World), {
+  ssr: false,
+});
+
+export default function GlobeDemo() {
+  const globeConfig = {
+    pointSize: 4,
+    globeColor: "#062056",
+    showAtmosphere: true,
+    atmosphereColor: "#FFFFFF",
+    atmosphereAltitude: 0.1,
+    emissive: "#062056",
+    emissiveIntensity: 0.1,
+    shininess: 0.9,
+    polygonColor: "rgba(255,255,255,0.7)",
+    ambientLight: "#38bdf8",
+    directionalLeftLight: "#ffffff",
+    directionalTopLight: "#ffffff",
+    pointLight: "#ffffff",
+    arcTime: 1000,
+    arcLength: 0.9,
+    rings: 1,
+    maxRings: 3,
+    initialPosition: { lat: 22.3193, lng: 114.1694 },
+    autoRotate: true,
+    autoRotateSpeed: 0.5,
+  };
+  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+  const sampleArcs = [
+    {
+      order: 1,
+      startLat: -19.885592,
+      startLng: -43.951191,
+      endLat: -22.9068,
+      endLng: -43.1729,
+      arcAlt: 0.1,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 1,
+      startLat: 28.6139,
+      startLng: 77.209,
+      endLat: 3.139,
+      endLng: 101.6869,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 1,
+      startLat: -19.885592,
+      startLng: -43.951191,
+      endLat: -1.303396,
+      endLng: 36.852443,
+      arcAlt: 0.5,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 2,
+      startLat: 1.3521,
+      startLng: 103.8198,
+      endLat: 35.6762,
+      endLng: 139.6503,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 2,
+      startLat: 51.5072,
+      startLng: -0.1276,
+      endLat: 3.139,
+      endLng: 101.6869,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 2,
+      startLat: -15.785493,
+      startLng: -47.909029,
+      endLat: 36.162809,
+      endLng: -115.119411,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 3,
+      startLat: -33.8688,
+      startLng: 151.2093,
+      endLat: 22.3193,
+      endLng: 114.1694,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 3,
+      startLat: 21.3099,
+      startLng: -157.8581,
+      endLat: 40.7128,
+      endLng: -74.006,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 3,
+      startLat: -6.2088,
+      startLng: 106.8456,
+      endLat: 51.5072,
+      endLng: -0.1276,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 4,
+      startLat: 11.986597,
+      startLng: 8.571831,
+      endLat: -15.595412,
+      endLng: -56.05918,
+      arcAlt: 0.5,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 4,
+      startLat: -34.6037,
+      startLng: -58.3816,
+      endLat: 22.3193,
+      endLng: 114.1694,
+      arcAlt: 0.7,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 4,
+      startLat: 51.5072,
+      startLng: -0.1276,
+      endLat: 48.8566,
+      endLng: -2.3522,
+      arcAlt: 0.1,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 5,
+      startLat: 14.5995,
+      startLng: 120.9842,
+      endLat: 51.5072,
+      endLng: -0.1276,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 5,
+      startLat: 1.3521,
+      startLng: 103.8198,
+      endLat: -33.8688,
+      endLng: 151.2093,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 5,
+      startLat: 34.0522,
+      startLng: -118.2437,
+      endLat: 48.8566,
+      endLng: -2.3522,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 6,
+      startLat: -15.432563,
+      startLng: 28.315853,
+      endLat: 1.094136,
+      endLng: -63.34546,
+      arcAlt: 0.7,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 6,
+      startLat: 37.5665,
+      startLng: 126.978,
+      endLat: 35.6762,
+      endLng: 139.6503,
+      arcAlt: 0.1,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 6,
+      startLat: 22.3193,
+      startLng: 114.1694,
+      endLat: 51.5072,
+      endLng: -0.1276,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 7,
+      startLat: -19.885592,
+      startLng: -43.951191,
+      endLat: -15.595412,
+      endLng: -56.05918,
+      arcAlt: 0.1,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 7,
+      startLat: 48.8566,
+      startLng: -2.3522,
+      endLat: 52.52,
+      endLng: 13.405,
+      arcAlt: 0.1,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 7,
+      startLat: 52.52,
+      startLng: 13.405,
+      endLat: 34.0522,
+      endLng: -118.2437,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 8,
+      startLat: -8.833221,
+      startLng: 13.264837,
+      endLat: -33.936138,
+      endLng: 18.436529,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 8,
+      startLat: 49.2827,
+      startLng: -123.1207,
+      endLat: 52.3676,
+      endLng: 4.9041,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 8,
+      startLat: 1.3521,
+      startLng: 103.8198,
+      endLat: 40.7128,
+      endLng: -74.006,
+      arcAlt: 0.5,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 9,
+      startLat: 51.5072,
+      startLng: -0.1276,
+      endLat: 34.0522,
+      endLng: -118.2437,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 9,
+      startLat: 22.3193,
+      startLng: 114.1694,
+      endLat: -22.9068,
+      endLng: -43.1729,
+      arcAlt: 0.7,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 9,
+      startLat: 1.3521,
+      startLng: 103.8198,
+      endLat: -34.6037,
+      endLng: -58.3816,
+      arcAlt: 0.5,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 10,
+      startLat: -22.9068,
+      startLng: -43.1729,
+      endLat: 28.6139,
+      endLng: 77.209,
+      arcAlt: 0.7,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 10,
+      startLat: 34.0522,
+      startLng: -118.2437,
+      endLat: 31.2304,
+      endLng: 121.4737,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 10,
+      startLat: -6.2088,
+      startLng: 106.8456,
+      endLat: 52.3676,
+      endLng: 4.9041,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 11,
+      startLat: 41.9028,
+      startLng: 12.4964,
+      endLat: 34.0522,
+      endLng: -118.2437,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 11,
+      startLat: -6.2088,
+      startLng: 106.8456,
+      endLat: 31.2304,
+      endLng: 121.4737,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 11,
+      startLat: 22.3193,
+      startLng: 114.1694,
+      endLat: 1.3521,
+      endLng: 103.8198,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 12,
+      startLat: 34.0522,
+      startLng: -118.2437,
+      endLat: 37.7749,
+      endLng: -122.4194,
+      arcAlt: 0.1,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 12,
+      startLat: 35.6762,
+      startLng: 139.6503,
+      endLat: 22.3193,
+      endLng: 114.1694,
+      arcAlt: 0.2,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 12,
+      startLat: 22.3193,
+      startLng: 114.1694,
+      endLat: 34.0522,
+      endLng: -118.2437,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 13,
+      startLat: 52.52,
+      startLng: 13.405,
+      endLat: 22.3193,
+      endLng: 114.1694,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 13,
+      startLat: 11.986597,
+      startLng: 8.571831,
+      endLat: 35.6762,
+      endLng: 139.6503,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 13,
+      startLat: -22.9068,
+      startLng: -43.1729,
+      endLat: -34.6037,
+      endLng: -58.3816,
+      arcAlt: 0.1,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+    {
+      order: 14,
+      startLat: -33.936138,
+      startLng: 18.436529,
+      endLat: 21.395643,
+      endLng: 39.883798,
+      arcAlt: 0.3,
+      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    },
+  ];
+
   return (
-    <div className='h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.1] bg-grid-black/[0.1] relative flex flex-col items-center justify-center mt-5 p-5'>
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] z-[10]"></div>
-      <div className='max-w-7xl auto grid lg:grid-cols-2 grid-cols-1 gap-4 z-[99]  p-2'>
-        {/* form */}
-        <div>
-          {/* <TextRevealCardPreview /> */}
-          <h2 className="text-2xl font-bold text-black mb-3">Contact us</h2>
-          <p className="mt-[-65px] ">I will contact you within hour</p>
-          {/* form tab */}
-          <div>
-
-            <form className='z-[990] mt-[30px]'>
-              <div className="grid gap-6 mb-5 md:grid-cols-2">
-                <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
-                  <input type="text" id="first_name" className="bg-gray-50 border border-gray-400 bg-opacity-60 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
-                </div>
-                <div>
-                  <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-                  <input type="text" id="last_name" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required />
-                </div>
-
-
-              </div>
-              <div>
-                <label  className="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
-                <input type="tel" id="phone" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
-              </div>
-
-              <div className="mb-6 mt-2">
-                <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
-                <input type="email" id="email" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
-              </div>
-
-
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-              <textarea id="message" rows={4} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4" placeholder="Write your thoughts here..."></textarea>
-
-
-
-
-              <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-            </form>
-
-          </div>
-        </div>
-        {/* globe */}
-        <div>
-          <div className=" w-full max-h-[600px] p-[10px]">
-             <GlobeDemo />
-          </div>
-         
+    <div className="flex flex-row items-center justify-center py-20 h-screen md:h-auto dark:bg-black relative w-full">
+      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className="div"
+        >
+          <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white ">
+          I'm very flexible with time zone communications
+          </h2>
+          <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
+          I'm highly flexible and can adapt to any time zone for seamless communication. :)
+          </p>
+        </motion.div>
+        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40 p-5" />
+        <div className="absolute w-full -bottom-20 h-full z-10">
+          <World data={sampleArcs} globeConfig={globeConfig} />;
         </div>
       </div>
-      {/* copyright */}
-      <div className="w-full bg-slate-50 z-[99] border border-b-[0px] border-t-1 border-x-0 border-gray-300 bg-opacity-85 mt-4">
-         <div className="flex flex-col md:flex-row gap-2 justify-between items-center max-w-7xl mx-auto  py-7 px-2">
-           <h2 className="text-xl text-black">Copyrights © 2024 | Suraj Pandey</h2>
-
-           <ul className="flex gap-3 text-gray-500 text-2xl ">
-                                <li><a><FaGithub /></a></li>
-                                <li><a><FaLinkedinIn /></a></li>
-                                <li><a><FaInstagram /></a></li>
-                            </ul>
-
-      </div>
-      </div>
-     
     </div>
-  )
+  );
 }
-
-export default footer
