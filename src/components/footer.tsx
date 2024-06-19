@@ -16,7 +16,8 @@ const footer = () => {
       <div className='max-w-7xl auto grid lg:grid-cols-2 grid-cols-1 gap-4 z-[99]  p-2'>
         {/* form */}
         <div>
-          <TextRevealCardPreview />
+          {/* <TextRevealCardPreview /> */}
+          <h2 className="text-2xl font-bold text-black mb-3">Contact us</h2>
           <p className="mt-[-65px] ">I will contact you within hour</p>
           {/* form tab */}
           <div>
@@ -58,7 +59,7 @@ const footer = () => {
         </div>
         {/* globe */}
         <div>
-          <div className=" max-h-[800px] overflow-hidden p-[10px] md:p-[10px]">
+          <div className=" w-full max-h-[600px] p-[10px]">
              <GlobeDemo />
           </div>
          
