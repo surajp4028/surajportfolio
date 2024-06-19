@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-hidden">
       <body className={font.className}>
         <div className="sticky top-0 backdrop-blur z-[999]">
           <Navbar />
