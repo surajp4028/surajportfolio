@@ -23,7 +23,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className='w-full mx-auto py-0 md:pt-2 py-1 px-4 bg-gray-50 overflow-hidden  border border-b-[1px] border-t-0 border-x-0 border-gray-200 bg-opacity-85'>
+            <div className='w-full mx-auto py-0 md:pt-2 py-1 px-4 bg-gray-50  border border-b-[1px] border-t-0 border-x-0 border-gray-200 bg-opacity-85'>
                 <div className='max-w-7xl mx-auto flex gap-2 justify-between items-center'>
                     <div className='flex gap-4 items-center'>
                         <h2 className='md:text-4xl text-3xl font-bold flex flex-col gap-0' >Suraj <span className='mt-[-15px] text-[14px] md:tracking-[2px] tracking-[1px] text-purple-900'>Portfolio</span></h2>
