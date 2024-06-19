@@ -58,7 +58,7 @@ const footer = () => {
         </div>
         {/* globe */}
         <div>
-          <div className=" max-h-[800px] overflow-hidden p-[40px] md:p-[10px]">
+          <div className=" max-h-[800px] overflow-hidden p-[10px] md:p-[10px]">
              <GlobeDemo />
           </div>
          
