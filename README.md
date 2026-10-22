@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Suraj Pandey — Portfolio
 
 Personal portfolio built with **Next.js 16**, **Tailwind CSS v4** and **Aceternity UI** components, with dark and light mode.
@@ -63,3 +64,7 @@ ULTRAMSG_TO=+91XXXXXXXXXX   # international format, with country code
 The UltraMsg instance must stay linked to a WhatsApp account (scan its QR under WhatsApp → Linked devices). If alerts stop, check the instance status in the UltraMsg dashboard.
 
 Set `NEXT_PUBLIC_SITE_URL` to your live domain for correct social preview images.
+=======
+# surajportfolio
+This is my portfolio respository
+>>>>>>> 98301da76f54862182a773a3577bebda1dcb9b2d
