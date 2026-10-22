@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suraj Pandey — Portfolio
 
-## Getting Started
+Personal portfolio built with **Next.js 16**, **Tailwind CSS v4** and **Aceternity UI** components, with dark and light mode.
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where to edit
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | File |
+| --- | --- |
+| Name, summary, experience, projects, education, skills text | `src/data/profile.ts` |
+| Tech logos (marquee + hero) | `src/components/tech-icons.tsx` |
+| Page sections | `src/components/sections/*` |
+| Aceternity components (copied from the registry) | `src/components/ui/*` |
+| Images (photo, dashboard preview) | `public/images/` |
+| Downloadable CV (PDF, generated from `/resume`) | `public/Suraj-Pandey-CV.pdf` |
+| Printable resume page | `src/app/resume/page.tsx` → http://localhost:3000/resume |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Regenerate the CV PDF
 
-## Learn More
+The PDF is printed from the `/resume` page, which reads the same data as the site (`src/data/profile.ts`). After editing:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build && npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+then, in a second terminal:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run cv:pdf
+```
 
-## Deploy on Vercel
+It uses Brave by default; set `BROWSER_PATH` to use Chrome instead.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact form
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`POST /api/contact` validates the message and emails it to you with [Resend](https://resend.com). Settings live in `.env` (git-ignored):
+
+```
+RESEND_API_KEY=re_xxx
+CONTACT_TO_EMAIL=surajp4028@gmail.com
+CONTACT_FROM_EMAIL=Portfolio Contact <onboarding@resend.dev>
+```
+
+`onboarding@resend.dev` works without a verified domain, but Resend then only delivers to the email you signed up to Resend with. To send from your own address (e.g. `hello@vishnuit.co.in`), verify the domain in Resend and change `CONTACT_FROM_EMAIL`. Add the same variables in your hosting provider (e.g. Vercel → Settings → Environment Variables) when you deploy.
+
+### WhatsApp alerts (UltraMsg)
+
+After the email is sent, the same enquiry is sent to your WhatsApp via [UltraMsg](https://ultramsg.com) (best-effort — if it fails, the form still succeeds). Settings in `.env`:
+
+```
+ULTRAMSG_INSTANCE_ID=instance123456
+ULTRAMSG_TOKEN=...
+ULTRAMSG_TO=+91XXXXXXXXXX   # international format, with country code
+```
+
+The UltraMsg instance must stay linked to a WhatsApp account (scan its QR under WhatsApp → Linked devices). If alerts stop, check the instance status in the UltraMsg dashboard.
+
+Set `NEXT_PUBLIC_SITE_URL` to your live domain for correct social preview images.
