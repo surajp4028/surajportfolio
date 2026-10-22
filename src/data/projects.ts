@@ -26,6 +26,38 @@ const img = (file: string) => `/images/projects/${file}`;
 
 export const projects: Project[] = [
   {
+    slug: "minimal-portfolio",
+    title: "Minimal Developer Portfolio",
+    tagline: "A clean, content-first personal site",
+    category: "Website",
+    client: "Personal project",
+    year: "2026",
+    role: "Design & Development",
+    summary:
+      "A second, minimal take on my portfolio — quiet typography, a floating navbar, light & dark themes and a built-in contact form.",
+    overview: [
+      "Alongside this animated portfolio, I designed and built a minimal version that puts the content first: a short intro with resume download, quick stats, selected projects, work experience, skills and a contact section, all on a single narrow column.",
+      "The design relies on typography, soft borders and whitespace instead of heavy effects. A floating pill navbar stays in reach while scrolling, the whole site switches between light and dark themes, and visitors can send an enquiry or a full project brief straight from the page.",
+    ],
+    highlights: [
+      { title: "Content-first layout", text: "Intro, stats, projects, experience and skills in one focused column." },
+      { title: "Floating navbar", text: "A pill navbar that follows you with a theme toggle and section links." },
+      { title: "Light & dark themes", text: "Every section is designed for both modes." },
+      { title: "Contact built in", text: "Quick email enquiry plus a full form with service and message." },
+    ],
+    tools: ["Next.js", "React", "Tailwind CSS"],
+    href: "https://suraj-minimal-portfolio.vercel.app/",
+    cover: img("minimal-portfolio-hero.webp"),
+    gallery: [
+      img("minimal-portfolio-projects.webp"),
+      img("minimal-portfolio-experience.webp"),
+      img("minimal-portfolio-skills-dark.webp"),
+      img("minimal-portfolio-contact-dark.webp"),
+    ],
+    accent: "from-neutral-500 to-neutral-800",
+    featured: true,
+  },
+  {
     slug: "imoneypay-merchant-onboarding",
     title: "Payment Gateway Merchant Onboarding",
     tagline: "From merchant sign-up to live payments",
@@ -525,37 +557,6 @@ export const projects: Project[] = [
     ],
     accent: "from-violet-500 to-purple-600",
     featured: true,
-  },
-  {
-    slug: "minimal-portfolio",
-    title: "Minimal Developer Portfolio",
-    tagline: "A clean, content-first personal site",
-    category: "Website",
-    client: "Personal project",
-    year: "2026",
-    role: "Design & Development",
-    summary:
-      "A second, minimal take on my portfolio — quiet typography, a floating navbar, light & dark themes and a built-in contact form.",
-    overview: [
-      "Alongside this animated portfolio, I designed and built a minimal version that puts the content first: a short intro with resume download, quick stats, selected projects, work experience, skills and a contact section, all on a single narrow column.",
-      "The design relies on typography, soft borders and whitespace instead of heavy effects. A floating pill navbar stays in reach while scrolling, the whole site switches between light and dark themes, and visitors can send an enquiry or a full project brief straight from the page.",
-    ],
-    highlights: [
-      { title: "Content-first layout", text: "Intro, stats, projects, experience and skills in one focused column." },
-      { title: "Floating navbar", text: "A pill navbar that follows you with a theme toggle and section links." },
-      { title: "Light & dark themes", text: "Every section is designed for both modes." },
-      { title: "Contact built in", text: "Quick email enquiry plus a full form with service and message." },
-    ],
-    tools: ["Next.js", "React", "Tailwind CSS"],
-    href: "https://suraj-minimal-portfolio.vercel.app/",
-    cover: img("minimal-portfolio-hero.webp"),
-    gallery: [
-      img("minimal-portfolio-projects.webp"),
-      img("minimal-portfolio-experience.webp"),
-      img("minimal-portfolio-skills-dark.webp"),
-      img("minimal-portfolio-contact-dark.webp"),
-    ],
-    accent: "from-neutral-500 to-neutral-800",
   },
 ];
 
