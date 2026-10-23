@@ -88,7 +88,7 @@ export const projects: Project[] = [
       { title: "Logs, retention & health", text: "Audited changes, log retention, live API health checks and a daily status email." },
     ],
     tools: ["Next.js", "React", "Node.js", "PHP", "MySQL", "AWS S3", "REST APIs", "Webhooks", "Postman", "JIRA", "Tailwind CSS"],
-    href: "https://www.imoneypay.in/",
+    href: "https://onboarding.imoneypg.com/",
     // Screenshots have merchant names, IDs, faces, Aadhaar details, VPAs and
     // internal emails/URLs blurred.
     cover: img("onboarding-admin.webp"),
