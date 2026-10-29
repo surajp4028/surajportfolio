@@ -7,7 +7,7 @@ import { useMounted } from "@/hooks/use-mounted";
 export function HeroSparkles() {
   const { resolvedTheme } = useTheme();
   const mounted = useMounted();
-  const dark = !mounted || resolvedTheme === "dark";
+  const dark = mounted && resolvedTheme === "dark";
 
   return (
     <div className="relative h-32 w-full max-w-[40rem]">
